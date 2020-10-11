@@ -1,0 +1,58 @@
+<div class="msg"  *ngIf="!dataSource.length > 0">
+  <p>No Products Available,Create New Product...</p>
+</div>
+
+<div class="addProducts">
+  <button class="btn btn-primary" (click)="onAddNewProduct()">Add Products</button>
+</div>
+
+
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8" *ngIf="dataSource.length > 0">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element" (click)="loadVariant(element)"> {{element[column]}}  </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">           
+           <div class="row">
+              <div class="col-6">
+                <p *ngIf="!variantColors.length>0">No variants colors availabe for the selected product</p>
+                <h5>available colors</h5>
+                <div *ngIf="variantColors.length>0">
+                  <div class="col-7" *ngFor="let bgcolor of variantColors">
+                    <span class="dot" [style.background-color]="bgcolor"></span>  
+                 </div>
+                </div> 
+              </div>  
+                <div class="col-4">
+                 <p *ngIf="!varaiantSize.length>0">No variants sizes availabe for the selected product</p>  
+                  <h5>available sizes</h5>
+                  <div *ngIf="varaiantSize.length>0">
+                    <div class="col-4" *ngFor="let size of varaiantSize">
+                      <p>{{size}}</p>    
+                    </div> 
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button  class="btn btn-success btn-sm" style="float: right;" (click)="onNavVariant(element.id)">Add New Variants</button>
+                  </div>
+           </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+

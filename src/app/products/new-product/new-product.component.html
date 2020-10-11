@@ -1,0 +1,26 @@
+<p *ngIf="addVariant">Your Product added successfully.  Kindly add Variant of products...</p>
+<p *ngIf="showError">Product already added in List</p>
+<div class="row">
+  <div class="col-sm-8">
+    <form [formGroup]="productForm" (ngSubmit)="onSaveProduct(productForm.value)">
+      <div class="ng-form-group">
+        <label for="name">Product name</label>      
+        <input class="form-control" id="brand" formControlName="name">
+      </div>
+      <div class="ng-form-group">
+        <label for="brand">Brand</label>      
+        <input class="form-control" id="brand" formControlName="brand">
+      </div>
+      <div class="ng-form-group">
+        <label for="gender">Gender</label>
+        <select for="gender" class="form-control" formControlName="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+    
+        <button class="btn btn-primary" type="submit" id="savebtn">Save Product</button>
+      
+    </form>
+  </div>
+</div>

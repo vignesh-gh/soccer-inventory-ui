@@ -1,0 +1,46 @@
+<p *ngIf="variant">Your Variant saved Successfully!</p>
+<p *ngIf="!variant">Add Variant for Product</p>
+<div class="row">
+  <div class="col-sm-8">
+    <form [formGroup]="variantForm" (ngSubmit)="onsaveVariant(variantForm.value)">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <select for="productName" class="form-control" formControlName="productName" (change)="getProductByName($event)">
+          <option [selected]="product.name" [value]="product.name" *ngFor="let product of products" #name>{{product.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="productBrand">Product Brand</label>
+        <select for="productBrand" class="form-control" formControlName="productBrand">
+          <option [selected]="product.brand" [value]="product.brand" *ngFor="let product of products" #name>{{product.brand}}</option>
+         </select>
+      </div>
+      <div class="form-group">
+        <label for="productGender">Gender</label>
+        <select for="productGender" class="form-control" formControlName="productGender">
+          <option [selected]="product.gender" [value]="product.gender" *ngFor="let product of products" #name>{{product.gender}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <select for="color" class="form-control" formControlName="color">
+          <option value="red" style="color:red">Red</option>
+          <option value="blue" style="color:blue">Blue</option>
+          <option value="Green" style="color:green">Green</option>
+          <option value="Yellow" style="color:yellow">Yellow</option>
+          <option value="Orange" style="color:orange">Orange</option>
+          <option value="pink" style="color:pink">Pink</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="size">Size</label>
+        <input type="number" id="size" formControlName="size" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" formControlName="price" class="form-control">
+      </div>
+      <button class="btn btn-primary">Save Variant</button>
+    </form>
+  </div>
+</div>
