@@ -18,6 +18,14 @@ import { ProdcutHttpService } from './shared/dao/producthttpservice';
 import {VariantHttpService} from 'src/app/shared/dao/variantHttpService';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StcoksComponent } from './stcoks/stcoks.component';
+import { VariantListComponent } from './stcoks/variant-list/variant-list.component';
+import { NewStocksComponent } from './stcoks/new-stocks/new-stocks.component';
+import { StockService } from './shared/service/stock.service';
+import { StockHttpSerivce } from './shared/dao/stockhttpservice';
+import { VaraintService } from './shared/service/variantService';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     NewProductComponent,
     NewVariantComponent,
     HeaderComponent,
-    PageNotfoundComponent
+    PageNotfoundComponent,
+    StcoksComponent,
+    VariantListComponent,
+    NewStocksComponent,
+    OrdersComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +53,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
-  providers: [ProductService,ProdcutHttpService,VariantHttpService],
+  providers: [ProductService,ProdcutHttpService,VariantHttpService,StockService,StockHttpSerivce,VaraintService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

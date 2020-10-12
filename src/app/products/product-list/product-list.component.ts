@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   listOfProducts:Product[]=[];
   dataSource:Product[]=[];;
   variantColors=[];
-  varaiantSize=[];
+  variantSize=[];
 
   ngOnInit() {
    this.getAllProducts();
@@ -36,20 +36,18 @@ export class ProductListComponent implements OnInit {
 
   loadVariant(element){
     console.log("element",element);
-    this.varaiantService.getVariantColorList(element.name,element.brand)
+    this.varaiantService.getVariantColorList(element.id)
     .subscribe((data:string[])=>{
       this.variantColors=data;
       console.log(data.length);
 
     }); 
   
-    this.varaiantService.getVariantSizeList(element.name,element.brand)
+    this.varaiantService.getVariantSizeList(element.id)
     .subscribe((data:string[])=>{
-      this.varaiantSize=data;
+      this.variantSize=data;
     });
 
-    
-  
   }
 
   onAddNewProduct(){

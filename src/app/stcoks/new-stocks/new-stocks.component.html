@@ -1,0 +1,20 @@
+<div class="container custom-font">
+  <p *ngIf="showStocks">Stocks added Sucessfully</p>
+  <div class="col-sm-7">
+    <div class="form-group">
+      <label for="variantName">Variant Name: {{variantName}}</label>
+      
+    </div>
+    <div class="form-group">
+      <label for="variantColor">Variant Color : {{variantColor}}</label>
+    </div>
+    <div class="form-group">      
+      <label for="units">Units</label>
+      <input  type="number" id="units" class="form-control" #unit
+      (keyup.enter)="unit.value"
+      (blur)="unit.value">
+    </div>
+    <button class="btn btn-primary" (click)="saveStock(unit.value)">Save</button>
+  </div>
+</div>
+

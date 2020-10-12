@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute ,Router} from '@angular/router';
 import { Variant } from 'src/app/shared/model/variant.model';
 import { VaraintService } from 'src/app/shared/service/variantService';
 import { Product } from 'src/app/shared/model/productmodel';
@@ -20,7 +20,7 @@ export class NewVariantComponent implements OnInit {
   product:Product;
   productName:String;
   constructor(private route:ActivatedRoute,private variantService:VaraintService,
-    private productService:ProductService) { }
+    private productService:ProductService,private router:Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((param)=>{
@@ -30,6 +30,7 @@ export class NewVariantComponent implements OnInit {
       'productName':new FormControl(null),
       'productBrand':new FormControl(null),
       'productGender':new FormControl(null),
+      'name': new FormControl(null),
       'color':new FormControl(null),
       'size':new FormControl(null),
       'price':new FormControl(null)
@@ -39,14 +40,19 @@ export class NewVariantComponent implements OnInit {
   }
 
   onsaveVariant(formValue){
+    console.log("formvalue",formValue);
     var newVariant= new Variant(
-      0,this.id,formValue.color,formValue.size,formValue.price,'','','',''
+      0,this.id,formValue.color,formValue.size,formValue.price,formValue.name,'','',''
     ); 
-    this.variantService.addNewVariant(newVariant).subscribe((res)=>{
+    this.variantService.addNewVariant(newVariant).subscribe((res:Variant)=>{
       if(res!=null){
-        this.variant=true;
+        this.variant=true;        
         console.log(newVariant);
         this.variantForm.reset();
+        setTimeout(()=>{
+          this.router.navigate(['../../../stocks/newStock',res.id],{relativeTo:this.route});
+        },100);
+       
       }
     });
   }

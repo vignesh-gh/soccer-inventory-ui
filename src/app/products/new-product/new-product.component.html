@@ -1,6 +1,6 @@
 <p *ngIf="addVariant">Your Product added successfully.  Kindly add Variant of products...</p>
 <p *ngIf="showError">Product already added in List</p>
-<div class="row">
+<div class="row custom-font">
   <div class="col-sm-8">
     <form [formGroup]="productForm" (ngSubmit)="onSaveProduct(productForm.value)">
       <div class="ng-form-group">
@@ -16,6 +16,7 @@
         <select for="gender" class="form-control" formControlName="gender">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
+          <option value="All">All</option>
         </select>
       </div>
     

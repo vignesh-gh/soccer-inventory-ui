@@ -8,17 +8,25 @@ export class VaraintService{
     constructor(private httpService:VariantHttpService,private prodService:ProductService){
     }
 
-    getVariantColorList(name,brand){
-        return this.httpService.getVariantColorList(name,brand);
+    getVariantColorList(id){
+        return this.httpService.getVariantColorList(id);
     }
 
-    getVariantSizeList(name,brand){
-        return this.httpService.getVariantSizeList(name,brand);
+    getVariantSizeList(id){
+        return this.httpService.getVariantSizeList(id);
 
     }
 
     addNewVariant(variant){
        return  this.httpService.addNewVariants(variant);
+    }
+
+    getAllVariants(){
+        return  this.httpService.getAllVariants();
+    }
+
+    getVariantById(id){
+        return this.httpService.getVariantById(id);
     }
 
 

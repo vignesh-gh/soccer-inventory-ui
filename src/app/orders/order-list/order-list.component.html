@@ -1,0 +1,35 @@
+<div class="container custom-font">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Order List</h3>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-font">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Order Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="units">
+          <mat-header-cell *matHeaderCellDef> Units </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.units}} </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="variant">
+          <mat-header-cell *matHeaderCellDef> Variant </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.variant}} </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>

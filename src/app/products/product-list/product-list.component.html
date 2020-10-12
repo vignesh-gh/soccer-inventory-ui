@@ -1,19 +1,22 @@
-<div class="msg"  *ngIf="!dataSource.length > 0">
+<div class="msg custom-font"  *ngIf="!dataSource.length > 0">
   <p>No Products Available,Create New Product...</p>
 </div>
 
 <div class="addProducts">
-  <button class="btn btn-primary" (click)="onAddNewProduct()">Add Products</button>
+  <!-- <button class="btn btn-primary" (click)="onAddNewProduct()">Add Products</button> -->
+  <button mat-raised-button (click)="onAddNewProduct()">Add Product<mat-icon>add</mat-icon></button>
 </div>
-
+<div class="col-sm-5 custom-font">
+  <h4>Product Lists</h4>
+</div>
 
 <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8" *ngIf="dataSource.length > 0">
+       class="mat-elevation-z8 custom-font" *ngIf="dataSource.length > 0">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element" (click)="loadVariant(element)"> {{element[column]}}  </td>
-  </ng-container>
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>    
+      <td mat-cell *matCellDef="let element" (click)="loadVariant(element)"> {{element[column]}} <mat-icon>keyboard_arrow_down</mat-icon></td>    
+      </ng-container>
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
   <ng-container matColumnDef="expandedDetail">
@@ -31,20 +34,21 @@
                 </div> 
               </div>  
                 <div class="col-4">
-                 <p *ngIf="!varaiantSize.length>0">No variants sizes availabe for the selected product</p>  
+                 <p *ngIf="!variantSize.length>0">No variants sizes availabe for the selected product</p>  
                   <h5>available sizes</h5>
-                  <div *ngIf="varaiantSize.length>0">
-                    <div class="col-4" *ngFor="let size of varaiantSize">
+                  <div *ngIf="variantSize.length>0">
+                    <div class="col-4" *ngFor="let size of variantSize">
                       <p>{{size}}</p>    
                     </div> 
                   </div>
                 </div>
                 <div class="col-2">
-                  <button  class="btn btn-success btn-sm" style="float: right;" (click)="onNavVariant(element.id)">Add New Variants</button>
+                  <button  class="btn btn-success btn-sm" style="float: right;" id="navVarinat" (click)="onNavVariant(element.id)"> New Variants<mat-icon>add</mat-icon>
+                  </button>
                   </div>
            </div>
       </div>
-    </td>
+     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

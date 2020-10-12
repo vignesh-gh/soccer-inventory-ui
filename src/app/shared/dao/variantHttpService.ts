@@ -6,27 +6,28 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class VariantHttpService{
     constructor(private http:HttpClient){}
 
-    getVariantColorList(name,brand){
-        let reqparams = new HttpParams();
-        reqparams= reqparams.append('name',name);
-        reqparams=reqparams.append('brand',brand);
+    getVariantColorList(id){
+
        return this.http.get(
-           'http://localhost:8080/inventory/getAllColors', {params:reqparams}
-       );
+           'http://localhost:8080/inventory/getAllColors/'+id);
     }
 
-    getVariantSizeList(name,brand){
-        let reqparams = new HttpParams();
-        reqparams= reqparams.append('name',name);
-        reqparams=reqparams.append('brand',brand);
+    getVariantSizeList(id){ 
        return this.http.get(
-           'http://localhost:8080/inventory/getAllSizes', {params:reqparams}
-       );
+           'http://localhost:8080/inventory/getAllSizes/'+id);
     }
 
     addNewVariants(variant){
          return this.http.post('http://localhost:8080/inventory/addVariant',variant);
     }   
+
+    getAllVariants(){
+        return this.http.get('http://localhost:8080/inventory/getAllVariants');
+    }
+
+    getVariantById(id){
+        return this.http.get('http://localhost:8080/inventory/getVariant/'+id);
+    }
 
  
     
