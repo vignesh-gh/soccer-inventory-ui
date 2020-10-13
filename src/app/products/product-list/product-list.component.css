@@ -71,3 +71,14 @@ table {
   button{
     font-family: 'Fredoka One', cursive;
   }
+  td{
+    cursor: pointer;
+  }
+  .col-sm-5{
+    padding-left: 4px;
+  }
+
+  #navVarinat{
+    position: absolute;
+    top:12px;
+  }

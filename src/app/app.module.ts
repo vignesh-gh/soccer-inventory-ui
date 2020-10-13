@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {AppRoutingModule} from 'src/app/shared/app.routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
@@ -54,7 +56,8 @@ import { OrderListComponent } from './orders/order-list/order-list.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [ProductService,ProdcutHttpService,VariantHttpService,StockService,StockHttpSerivce,VaraintService],
   bootstrap: [AppComponent]

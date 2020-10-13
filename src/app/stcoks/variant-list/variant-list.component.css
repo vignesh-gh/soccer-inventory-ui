@@ -4,6 +4,7 @@ table {
   
   tr.example-detail-row {
     height: 0;
+
   }
   
   tr.example-element-row:not(.example-expanded-row):hover {
@@ -53,3 +54,15 @@ table {
   .container{
     margin-top: 25px;
   }
+
+  td{
+    cursor: pointer;
+  }
+
+  .table-header{
+    padding-left: 14px;
+  }
+ #newStock{
+  position: absolute;
+  top: 12px;
+ }

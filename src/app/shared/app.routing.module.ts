@@ -11,7 +11,7 @@ import { NewStocksComponent } from '../stcoks/new-stocks/new-stocks.component';
 import { OrdersComponent } from '../orders/orders.component';
 import { OrderListComponent } from '../orders/order-list/order-list.component';
 const appRoute:Routes=[
-    {path:'',component:ProductListComponent,pathMatch:'full'},
+    {path:'',component:ProductListComponent},
     {path:'product',component:ProductsComponent,children:[
         {path:'list',component:ProductListComponent},
         {path:'newProduct',component:NewProductComponent},
